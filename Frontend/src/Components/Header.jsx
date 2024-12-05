@@ -1,7 +1,6 @@
 import React from "react";
 import "iconify-icon";
 
-
 const Header = ({ cartCount = 0 }) => {
   const menuItems = [
     { href: "index.html", label: "Home" },
@@ -126,7 +125,10 @@ const Header = ({ cartCount = 0 }) => {
                 <option>Toy</option>
               </select>
 
-              <ul className="navbar-nav menu-list list-unstyled d-flex gap-md-3 mb-0">
+              <ul
+                className="navbar-nav menu-list list-unstyled d-flex gap-md-3 mb-0"
+                style={{ listStyleType: "none", paddingLeft: 0 }}
+              >
                 {menuItems.map((item, index) => (
                   <li key={index} className="nav-item">
                     <a href={item.href} className="nav-link">
@@ -136,9 +138,31 @@ const Header = ({ cartCount = 0 }) => {
                 ))}
               </ul>
               <div className="d-flex gap-md-4 mb-0 mt-3">
-              <iconify-icon icon="healthicons:person"></iconify-icon>
-              <iconify-icon icon="mdi:heart"></iconify-icon>
-              <iconify-icon icon="mdi:cart"></iconify-icon>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <iconify-icon icon="healthicons:person"></iconify-icon>
+                  </a>
+                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                      <a className="dropdown-item" href="#">Profile</a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">Logout</a>
+                    </li>
+                  </ul>
+                </li>
+                <iconify-icon icon="mdi:heart"></iconify-icon>
+                <iconify-icon icon="mdi:cart"></iconify-icon>
               </div>
             </div>
           </div>
