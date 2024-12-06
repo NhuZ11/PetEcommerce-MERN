@@ -26,9 +26,10 @@
     color: black;
   }
 
-  .non-list {
-    list-style-type: none;
-    padding-left: 0;
+  .dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
 

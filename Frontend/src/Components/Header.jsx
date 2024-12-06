@@ -1,5 +1,9 @@
 import React from "react";
 import "iconify-icon";
+import { IoPersonSharp } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Header = ({ cartCount = 0 }) => {
   const menuItems = [
@@ -130,39 +134,51 @@ const Header = ({ cartCount = 0 }) => {
                 style={{ listStyleType: "none", paddingLeft: 0 }}
               >
                 {menuItems.map((item, index) => (
-                  <li key={index} className="nav-item">
+                  <li key={index} className="nav-item fs-4">
                     <a href={item.href} className="nav-link">
                       {item.label}
                     </a>
                   </li>
                 ))}
               </ul>
-              <div className="d-flex gap-md-4 mb-0 mt-3">
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
+
+              <div className="mt-2">
+                <Link to="/login" type="button" class="btn btn-primary px-3 py-1 me-4">
+                  Login
+                </Link>
+                <Link to="/register" type="button" class="btn btn-success px-3 py-1">
+                  Register
+                </Link>
+              </div>
+
+              <div className="d-flex gap-md-4 mb-1 mt-3">
+                <div className="dropdown ">
+                  <IoPersonSharp
+                    size={22}
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
-                  >
-                    <iconify-icon icon="healthicons:person"></iconify-icon>
-                  </a>
-                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    className="cursor-pointer mb-1"
+                  />
+                  <ul className="dropdown-menu">
                     <li>
-                      <a className="dropdown-item" href="#">Profile</a>
+                      <a className="dropdown-item" href="#">
+                        Profile
+                      </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">Settings</a>
+                      <a className="dropdown-item" href="#">
+                        Settings
+                      </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">Logout</a>
+                      <a className="dropdown-item" href="#">
+                        Logout
+                      </a>
                     </li>
                   </ul>
-                </li>
-                <iconify-icon icon="mdi:heart"></iconify-icon>
-                <iconify-icon icon="mdi:cart"></iconify-icon>
+                </div>
+                <FaHeart size={20} />
+                <FaShoppingCart size={20} />
               </div>
             </div>
           </div>
