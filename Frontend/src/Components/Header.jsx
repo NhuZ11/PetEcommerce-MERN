@@ -143,10 +143,10 @@ const Header = ({ cartCount = 0 }) => {
               </ul>
 
               <div className="mt-2">
-                <Link to="/login" type="button" class="btn btn-primary px-3 py-1 me-4">
+                <Link to="/login" type="button" className="btn btn-primary px-3 py-1 me-4">
                   Login
                 </Link>
-                <Link to="/register" type="button" class="btn btn-success px-3 py-1">
+                <Link to="/register" type="button" className="btn btn-success px-3 py-1">
                   Register
                 </Link>
               </div>
