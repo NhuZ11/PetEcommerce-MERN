@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Register = (props) => {
-    const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
+const Register = () => {
+    const [credentials, setCredentials] = useState({ username: "", email: "", password: "", cpassword: "" });
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { name, email, password } = credentials;
+        const { username, email, password } = credentials;
         const response = await fetch("http://localhost:8000/api/auth/createUser", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name, email, password }),
+            body: JSON.stringify({ username, email, password }),
         });
         const json = await response.json();
         console.log('this is response ', json);
         if (json) {
-            // Save the auth token and redirect
-            localStorage.setItem('token', json.authToken);
+          
             navigate("/login");
-            props.showAlert('Account created', 'success');
+            console.log("success");
         } else {
-            props.showAlert('Invalid credentials', 'danger');
+            console.log("failed");
         }
     };
 
@@ -38,14 +37,14 @@ const Register = (props) => {
                     <h2 className="text-center mb-4">Register</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
-                            <label htmlFor="name" className="form-label">Name</label>
+                            <label htmlFor="username" className="form-label">Username</label>
                             <input
                                 type="text"
                                 className="form-control bg-dark text-light border-0"
                                 value={credentials.name}
                                 onChange={onChange}
-                                id="name"
-                                name="name"
+                                id="username"
+                                name="username"
                                 placeholder="Enter your name"
                                 required
                             />

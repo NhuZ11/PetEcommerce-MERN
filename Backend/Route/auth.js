@@ -48,6 +48,7 @@ router.post(
       console.log(authToken);
       res.json({ user, authToken });
     } catch (error) {
+      console.log(error.message)
       res.status(500).send("Internal server error");
     }
   }

@@ -3,15 +3,22 @@ import "iconify-icon";
 import { IoPersonSharp } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { IoLogOutOutline } from "react-icons/io5";
 
 const Header = ({ cartCount = 0 }) => {
+  const navigate = useNavigate();
   const menuItems = [
-    { href: "index.html", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "shop.html", label: "Shop" },
     { href: "blog.html", label: "Blog" },
     { href: "contact.html", label: "Contact" },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login"); // Navigate to login page after logout
+  };
 
   return (
     <header>
@@ -20,13 +27,13 @@ const Header = ({ cartCount = 0 }) => {
           {/* Logo Section */}
           <div className="col-sm-4 col-lg-3 text-center text-sm-start">
             <div className="main-logo">
-              <a href="index.html">
+              <Link to="/">
                 <img
                   src="images/logo.png"
                   alt="Company Logo"
                   className="img-fluid"
                 />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -135,21 +142,33 @@ const Header = ({ cartCount = 0 }) => {
               >
                 {menuItems.map((item, index) => (
                   <li key={index} className="nav-item fs-4">
-                    <a href={item.href} className="nav-link">
+                    <Link to={`${item.href}`} className="nav-link">
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-2">
-                <Link to="/login" type="button" className="btn btn-primary px-3 py-1 me-4">
-                  Login
-                </Link>
-                <Link to="/register" type="button" className="btn btn-success px-3 py-1">
-                  Register
-                </Link>
-              </div>
+              {localStorage.getItem("token") ? (
+                <div></div>
+              ) : (
+                <div className="mt-2">
+                  <Link
+                    to="/login"
+                    type="button"
+                    className="btn btn-primary px-3 py-1 me-4"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    type="button"
+                    className="btn btn-success px-3 py-1"
+                  >
+                    Register
+                  </Link>
+                </div>
+              )}
 
               <div className="d-flex gap-md-4 mb-1 mt-3">
                 <div className="dropdown ">
@@ -171,9 +190,9 @@ const Header = ({ cartCount = 0 }) => {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
-                        Logout
-                      </a>
+                      <button className="dropdown-item" onClick={handleLogout}>
+                        <IoLogOutOutline /> Logout
+                      </button>
                     </li>
                   </ul>
                 </div>
