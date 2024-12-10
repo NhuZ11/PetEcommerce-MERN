@@ -7,6 +7,7 @@ import Header from './Components/Header';
 import Home from './Components/Home';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import AdminDashboard from './Components/AdminPanel/AdminDashboard';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home/>  } />
           <Route path="/login" element={<Login />  } />
           <Route path="/register" element={<Register /> } />
+          <Route path="/admin" element={<AdminDashboard /> } />
         </Routes>
       </Router>
       </div>
