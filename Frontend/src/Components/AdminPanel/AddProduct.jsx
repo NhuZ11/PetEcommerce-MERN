@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const AddProduct = () => {
@@ -8,7 +8,24 @@ const AddProduct = () => {
     price: '',
     instock: '',
     image: null,
+    category: '', // Add a category field
   });
+
+  const [categories, setCategories] = useState([]); // State to store categories
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/category/getcategory'); // Adjust the endpoint as needed
+        setCategories(response.data.data.category);
+      } catch (error) {
+        console.error('Error fetching categories:', error.response?.data || error.message);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+  console.log(categories)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +35,7 @@ const AddProduct = () => {
     formData.append('description', product.description);
     formData.append('price', product.price);
     formData.append('instock', product.instock);
+    formData.append('category', product.category); // Include category
     if (product.image) {
       formData.append('myfile', product.image);
     }
@@ -38,6 +56,7 @@ const AddProduct = () => {
         price: '',
         instock: '',
         image: null,
+        category: '',
       });
     } catch (error) {
       console.error('Error adding product:', error.response?.data || error.message);
@@ -116,6 +135,24 @@ const AddProduct = () => {
                 onChange={handleChange}
                 required
               />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="category" className="form-label">Category</label>
+              <select
+                name="category"
+                id="category"
+                className="form-control bg-dark text-light border-0"
+                value={product.category}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select a category</option>
+                {categories.map((cat) => (
+                  <option key={cat._id} value={cat.name}>
+                    {cat.name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="mb-3">
               <label htmlFor="image" className="form-label">Choose Image</label>

@@ -26,6 +26,9 @@ const ProductSchema = new Schema({
         type: [String],
         required: false
     },
+    category: {
+        type: String
+    },
     date:{
         type: Date,
         default: Date.now

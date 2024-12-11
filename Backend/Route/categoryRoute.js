@@ -25,4 +25,21 @@ router.post("/addcategory", async(req,res) =>{
 })
 
 
+router.get("/getcategory", async(req,res)=>{
+    try{
+        const category = await Category.find({})
+        res.status(200).json({
+            status : 'Success',
+            data : {
+                category
+            }
+        })
+    }catch(err){
+        res.status(500).json({
+            status: 'Failed',
+            message : err
+        })
+    }
+})
+
 module.exports = router;

@@ -60,7 +60,7 @@ router.post('/addproductbyadmin',upload.single('myfile'),async (req, res) => {
 // Add product route
 router.post('/addproduct', authenticateUser, upload.single('myfile'), async (req, res) => {
   try {
-    const { title, description, price, instock } = req.body;
+    const { title, description, price, category, instock } = req.body;
 
     // Validation
     if (!title || title.length < 3) {
@@ -82,6 +82,7 @@ router.post('/addproduct', authenticateUser, upload.single('myfile'), async (req
       description,
       price,
       instock,
+      category,
       images: req.file ? [req.file.filename] : [],
       user: req.user.id,
     });

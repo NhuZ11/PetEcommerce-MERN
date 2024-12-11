@@ -27,6 +27,7 @@ const AddCategory = () => {
         }
       );
       console.log("Category added successfully:", response.data);
+      alert("Category added successful");
 
       // Reset form
       setCategory({
@@ -95,7 +96,7 @@ const AddCategory = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="pet" className="form-label">
-                Category Type
+                Pet Type
               </label>
               <select
                 name="pet"
