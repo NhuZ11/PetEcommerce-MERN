@@ -65,6 +65,9 @@ app.use("/api/auth", require("./Route/auth.js"));
 // Product routes
 app.use("/api/product", require("./Route/productRoute.js"));
 
+//category routes
+app.use("/api/category", require("./Route/categoryRoute.js"));
+
 // Upload endpoint for single file upload
 app.post("/upload",authenticateUser, upload.single("file"), (req, res) => {
   res.send({ filePath: `/uploads/${req.file.filename}` });
