@@ -109,6 +109,8 @@ const AddCategory = () => {
                 <option value="">Select a category</option>
                 <option value="Dog">Dog</option>
                 <option value="Cat">Cat</option>
+                <option value="Cat">Bird</option>
+                <option value="Cat">Fish</option>
               </select>
             </div>
             <button type="submit" className="btn btn-primary w-100">
