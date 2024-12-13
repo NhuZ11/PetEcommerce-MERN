@@ -98,10 +98,29 @@ router.post('/addproduct', authenticateUser, upload.single('myfile'), async (req
 
 
 
-router.get('/getallproducts', authenticateUser, async (req, res) => {
+// router.get('/getallproducts', authenticateUser, async (req, res) => {
+//   try {
+//     // Fetch products for the authenticated user
+//     const products = await Product.find({ user: req.user.id });
+
+//     if (products.length === 0) {
+//       return res.status(404).json({ message: 'No products found for this user.' });
+//     }
+
+//     res.status(200).json(products);
+//   } catch (error) {
+//     console.error('Error fetching products:', error.message);
+//     res.status(500).send('Internal server error');
+//   }
+// });
+
+
+
+
+router.get('/getallproducts', async (req, res) => {
   try {
     // Fetch products for the authenticated user
-    const products = await Product.find({ user: req.user.id });
+    const products = await Product.find();
 
     if (products.length === 0) {
       return res.status(404).json({ message: 'No products found for this user.' });
