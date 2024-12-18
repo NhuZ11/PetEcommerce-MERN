@@ -11,6 +11,19 @@
   border: none;
 }
 
+/* hero-section */
+
+.hero-title{
+  font-size: 60px;
+  font-family: 'Chilanka', cursive;
+}
+
+.hero-subtitle{
+  font-size: 22px;
+  font-family: 'Montserrat', sans-serif;
+  color: #DEAD6F; ;
+}
+
 
 .font-style {
     font-family: 'Caveat', cursive; /* Ensure this is imported */
