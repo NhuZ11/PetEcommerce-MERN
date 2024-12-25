@@ -45,12 +45,12 @@ const HeroSlider = () => {
                   {" "}
                   For <span style={{ color: "#DEAD6F" }}>Your Pets</span>
                 </h1>
-                <a
-                  href="#"
-                  className="btn btn-outline-dark btn-lg text-uppercase fs-6  rounded-1"
-                >
-                  shop now
-                </a>
+                    <a
+                    href="#"
+                    className="btn btn-outline-dark btn-lg text-uppercase fs-6  rounded-1"
+                    >
+                    shop now
+                    </a>
               </div>
             </div>
           </div>
