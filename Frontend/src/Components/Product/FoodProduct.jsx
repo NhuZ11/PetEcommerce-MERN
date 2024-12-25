@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 
 const FoodProduct = () => {
   const [products, setProducts] = useState([]);
@@ -16,19 +21,29 @@ const FoodProduct = () => {
   }, []);
 
   return (
-    <>
     <section id="products" className="my-5 overflow-hidden">
       <div className="container pb-5">
         <div className="section-header d-md-flex justify-content-between align-items-center mb-4">
           <h2 className="display-3 fw-normal hero-title">Food Products</h2>
         </div>
 
-        <div className="row">
-          {/* Filter products by category "Food" */}
+        {/* Swiper Carousel */}
+        <Swiper
+          
+          spaceBetween={20}
+          slidesPerView={3}
+    
+        
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
           {products
             .filter((product) => product.category === "Food")
             .map((product) => (
-              <div className="col-md-4 mb-4" key={product._id}>
+              <SwiperSlide key={product._id}>
                 <div className="card position-relative h-100 shadow-sm">
                   <a href={`/product/${product._id}`}>
                     <img
@@ -54,12 +69,11 @@ const FoodProduct = () => {
                     </a>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-        </div>
+        </Swiper>
       </div>
     </section>
-    </>
   );
 };
 

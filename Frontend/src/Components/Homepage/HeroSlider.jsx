@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -31,6 +31,13 @@ const swiper = new Swiper(".swiper", {
 });
 
 const HeroSlider = () => {
+  // useEffect(() => {
+  //   new Swiper(".swiper", {
+  //     // Optional parameters
+  //     direction: "horizontal",
+
+  //   });
+  // });
   return (
     <section style={{ background: "#F9F3EC" }}>
       <div className="swiper">
@@ -45,12 +52,12 @@ const HeroSlider = () => {
                   {" "}
                   For <span style={{ color: "#DEAD6F" }}>Your Pets</span>
                 </h1>
-                    <a
-                    href="#"
-                    className="btn btn-outline-dark btn-lg text-uppercase fs-6  rounded-1"
-                    >
-                    shop now
-                    </a>
+                <a
+                  href="#"
+                  className="btn btn-outline-dark btn-lg text-uppercase fs-6  rounded-1"
+                >
+                  shop now
+                </a>
               </div>
             </div>
           </div>
@@ -93,9 +100,6 @@ const HeroSlider = () => {
             </div>
           </div>
           <div className="swiper-pagination"></div>
-
-          <div className="swiper-button-prev"></div>
-          <div className="swiper-button-next"></div>
         </div>
       </div>
     </section>
