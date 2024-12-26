@@ -21,7 +21,16 @@
 .hero-subtitle{
   font-size: 22px;
   font-family: 'Montserrat', sans-serif;
-  color: #DEAD6F; ;
+  color: #DEAD6F; 
+}
+
+.title{
+  font-family: 'Chilanka', cursive;
+}
+
+.subtitle{
+  font-family: 'Montserrat', sans-serif;
+  color: #DEAD6F; 
 }
 
 

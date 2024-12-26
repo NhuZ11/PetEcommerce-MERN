@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { FaHeart } from "react-icons/fa";
 
 
 const FoodProduct = () => {
@@ -54,20 +55,19 @@ const FoodProduct = () => {
                     />
                   </a>
                   <div className="card-body p-0">
-                    <a href={`/product/${product._id}`}>
-                      <h3 className="card-title pt-4 m-0 text-truncate">
+                    
+                      <h3 className="card-title pt-4 m-0 text-truncate title pb-2">
                         {product.title}
                       </h3>
-                    </a>
-                    <p className="text-muted">{product.description}</p>
-                    <h3 className="text-primary">${product.price}</h3>
+                   
+                    
+                    <h3 className="subtitle">${product.price}</h3>
                     <p className="text-muted">Stock: {product.instock}</p>
                   </div>
-                  <div className="card-footer text-center bg-light border-0 mt-3">
-                    <a href={`/product/${product._id}`} className="btn btn-outline-dark">
-                      View Details
-                    </a>
-                  </div>
+                 <div>
+                  <button className="px-5 py-2 rounded "><span className="title">Add To Cart</span></button>
+                  <button className="py-2 px-3 rounded"><FaHeart /></button>
+                 </div>
                 </div>
               </SwiperSlide>
             ))}
